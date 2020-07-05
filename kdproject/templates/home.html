@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+    <center>
+        {% if messages %}
+        {% for message in messages %}
+            <h1>{{message}}</h1>
+        {% endfor %}
+    {% endif %}
+        <a href="/accounts/signup">signup</a>
+        <br>
+        <a href="/accounts/login">Login</a>
+        <br>
+        {% if user.is_authenticated %}
+            <h1>Welcome {{user.username}} </h1>
+            <a href="/accounts/logout">Logout</a>
+            {% if Products %}
+                {% for product in Products %}
+                    <h4>ID : {{product.itemId}}</h4> 
+                    <h4>Name : {{product.itemName}}</h4>
+                    <h4>Price : {{product.itemPrice}}</h4>
+                    <h4>Stock : {{product.itemStock}}</h4>
+                    <img src="{{product.pIMG1.url}}" height="200" width="400"><br>
+                    <img src="{{product.pIMG2.url}}" height="200" width="400"><br>
+                    <img src="{{product.pIMG3.url}}" height="200" width="400"><br>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    </center>
+</body>
+</html>
